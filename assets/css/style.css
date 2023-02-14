@@ -1,0 +1,13 @@
+#car {
+    display: inline-block;
+    width: 70px;
+    position: absolute;
+    left: 0px;
+}
+
+.tree {
+    display: inline-block;
+    width: 40px;
+    position: absolute;
+    left: 25%;
+}
