@@ -30,33 +30,33 @@ document.body.onkeydown = function () {  //toetsenbord pijltjes-toets events
     switch (e) {
         case 40: //down
             car.style.transform = 'rotate(90deg)';
-            car.style.top = (parseInt(car.style.top)) + 5 + "px";
+            car.style.top = (parseInt(car.style.top)) + 20 + "px";
             if (crash() == true) {
-                car.style.top = (parseInt(car.style.top)) - 5 + "px";
+                car.style.top = (parseInt(car.style.top)) - 20 + "px";
             }
             break;
         case 37: //left
             car.style.transform = 'rotate(180deg)';
-            car.style.left = (parseInt(car.style.left)) - 5 + "px";
+            car.style.left = (parseInt(car.style.left)) - 20 + "px";
             if (crash() == true) {
                 console.log("hallo")
-                car.style.left = (parseInt(car.style.left)) + 5 + "px";
+                car.style.left = (parseInt(car.style.left)) + 20 + "px";
 
             }
             break;
         case 39: //right
             car.style.transform = 'rotate(0deg)';
-            car.style.left = (parseInt(car.style.left)) + 5 + "px";
+            car.style.left = (parseInt(car.style.left)) + 20 + "px";
             if (crash() == true) {
-                car.style.left = (parseInt(car.style.left)) - 5 + "px";
+                car.style.left = (parseInt(car.style.left)) - 20 + "px";
 
             }
             break;
         case 38: //top
             car.style.transform = 'rotate(-90deg)';
-            car.style.top = (parseInt(car.style.top)) - 5 + "px";
+            car.style.top = (parseInt(car.style.top)) - 20 + "px";
             if (crash() == true) {
-                car.style.top = (parseInt(car.style.top)) + 5 + "px";
+                car.style.top = (parseInt(car.style.top)) + 20   + "px";
 
             }
             break;
@@ -73,6 +73,8 @@ document.body.onkeydown = function () {  //toetsenbord pijltjes-toets events
                 crashCounter += 1;
                 document.getElementById("crashCounter").innerHTML = "<b>Crash counter:</b> " + crashCounter;
                 console.log(crashCounter)
+                
+                    document.getElementById("car").src = "assets/img/car_crashed.png";
                 return true;
             }
         }
