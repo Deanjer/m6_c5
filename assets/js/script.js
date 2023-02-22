@@ -12,9 +12,9 @@ var crashCounter = 0; // stel de crashcounter bij begin van de game op 0 in
 var a = document.getElementById("crashCounter");
 a.innerHTMl = "test2";
 //document.getElementById("crashCounter").innerHTML = "I have changed!";
-for (let index = 0; index < 5; index++) {  // plaats 5 bomen random op het speelvak
+for (let index = 0; index < 15; index++) {  // plaats 5 bomen random op het speelvak
     var img = document.createElement('img');
-    img.src = 'assets/img/tree.jpg';  // URL van boom-afbeelding
+    img.src = 'assets/img/object.png';  // URL van boom-afbeelding
     img.className = "tree";
     img.style.left = Math.random(80) * 80 + "%";
     img.style.top = Math.random(80) * 80 + "%";
@@ -99,7 +99,6 @@ document.body.onkeydown = function () {  //toetsenbord pijltjes-toets events
         trees = document.getElementsByClassName("tree"); // haal alle bomen op
         var overlap = false;
         var overlapcar2 = false;
-        
         for (let index = 0; index < trees.length; index++) { // loop door alle bomen heen, en kijk of er raakvlak is met de car
             overlap = !(car.getBoundingClientRect().right < trees[index].getBoundingClientRect().left ||
                 car.getBoundingClientRect().left > trees[index].getBoundingClientRect().right ||
@@ -109,7 +108,7 @@ document.body.onkeydown = function () {  //toetsenbord pijltjes-toets events
                 car2.getBoundingClientRect().left > trees[index].getBoundingClientRect().right ||
                 car2.getBoundingClientRect().bottom < trees[index].getBoundingClientRect().top ||
                 car2.getBoundingClientRect().top > trees[index].getBoundingClientRect().bottom);
-       if (overlap || overlapcar2) { // er is een crash, tel de crashcounter op
+       if (overlap) { // er is een crash, tel de crashcounter op
                 crashCounter += 1;
                 document.getElementById("crashCounter").innerHTML = "<b>Crash counter:</b> " + crashCounter;
                 console.log(crashCounter)
@@ -117,10 +116,22 @@ document.body.onkeydown = function () {  //toetsenbord pijltjes-toets events
                     document.getElementById("car").src = "assets/img/car_crashed.png";
                 return true;
             }
+            if (overlapcar2){
+                crashCounter += 1;
+                document.getElementById("crashCounter").innerHTML = "<b>Crash counter:</b> " + crashCounter;
+                console.log(crashCounter)
+                console.log("crash")
+                    document.getElementById("car2").src = "assets/img/car_crashed.png";
+                return true;
+            }
         }
         return overlap;
     }
 
-
+    for(var z=0; crashCounter>9; z++){
+        window.location.reload();
+        return false;
+        }
 }
+
 
